@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "evidence.profile.certification",
+  "implementation_id": "opencode-source",
+  "profile_id": "integrations-canonical",
+  "source_commit": "9640d889baa58fa01ed612a6372ba77462f79d9f",
+  "status": "pass",
+  "case_ids": [
+    "witness.integrations.auth_surface",
+    "witness.integrations.providers"
+  ],
+  "observation_kinds": [
+    "provider_inventory"
+  ],
+  "transcript_paths": [
+    "evidence/traceability/opencode_source.integrations_canonical.auth_surface.jsonl",
+    "evidence/traceability/opencode_source.integrations_canonical.providers.jsonl"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "evidence.profile.certification",
+  "implementation_id": "opencode-source",
+  "profile_id": "full-reference",
+  "source_commit": "9640d889baa58fa01ed612a6372ba77462f79d9f",
+  "status": "pass",
+  "case_ids": [
+    "witness.runtime.workspace_lifecycle",
+    "witness.runtime.permission_cycle",
+    "witness.runtime.permission_reject",
+    "witness.tui.command_dialog",
+    "witness.tui.permission_view",
+    "witness.tui.plugin_route_missing",
+    "witness.tui.session_list_dialog",
+    "witness.tui.theme_dialog",
+    "witness.integrations.auth_surface",
+    "witness.integrations.providers",
+    "witness.security.path_operations",
+    "witness.security.permission_gating"
+  ],
+  "observation_kinds": [
+    "state_projection",
+    "provider_inventory",
+    "route_projection",
+    "permission_gate"
+  ],
+  "transcript_paths": [
+    "evidence/traceability/opencode_source.profile.core_runtime.json",
+    "evidence/traceability/opencode_source.profile.runtime_formal.json",
+    "evidence/traceability/opencode_source.profile.tui_certified.json",
+    "evidence/traceability/opencode_source.profile.integrations_canonical.json",
+    "evidence/traceability/opencode_source.profile.security_critical.json"
+  ],
+  "included_profiles": [
+    "core-runtime",
+    "runtime-formal",
+    "tui-certified",
+    "integrations-canonical",
+    "security-critical"
+  ]
+}

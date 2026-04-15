@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "evidence.profile.certification",
+  "implementation_id": "opencode-source",
+  "profile_id": "runtime-formal",
+  "source_commit": "9640d889baa58fa01ed612a6372ba77462f79d9f",
+  "status": "pass",
+  "case_ids": [
+    "witness.runtime.permission_cycle",
+    "witness.runtime.permission_reject"
+  ],
+  "observation_kinds": [
+    "state_projection"
+  ],
+  "transcript_paths": [
+    "evidence/traceability/opencode_source.runtime_formal.permission_cycle.jsonl",
+    "evidence/traceability/opencode_source.runtime_formal.permission_reject.jsonl"
+  ]
+}

@@ -99,19 +99,28 @@ const renderMatrix = (rows: Row[]) => {
   const nodes = rows.filter((x) => x.kind === "node")
   const edges = rows.filter((x) => x.kind === "edge")
   const profiles = nodes.filter((x) => x.type === "profile")
+  const included = (id: string, seen = new Set<string>()): string[] => {
+    if (seen.has(id)) return []
+    seen.add(id)
+    const next = edges.filter((x) => x.type === "includes" && x.from === id).flatMap((x) => (x.to ? [x.to] : []))
+    return [...next, ...next.flatMap((x) => included(x, seen))]
+  }
+  const required = (id: string) => [...new Set([id, ...included(id)])].flatMap((x) => edges.filter((y) => y.type === "requires" && y.from === x))
+  const certified = (id: string) => edges.filter((x) => x.type === "certifies" && x.to === id).length
   return md("completeness-matrix.md", [
     `> ${quote}`,
     "",
     "## Profile Matrix",
     "",
     table(
-      ["Profile", "Covers", "Requires", "Certified", "State"],
+      ["Profile", "Includes", "Covers", "Requires", "Certified", "State"],
       profiles.map((profile) => [
         `\`${profile.id}\``,
+        `${included(profile.id).map((x) => `\`${x}\``).join(", ")}`,
         `${edges.filter((x) => x.type === "covers" && x.from === profile.id).map((x) => `\`${x.to}\``).join(", ")}`,
-        `${edges.filter((x) => x.type === "requires" && x.from === profile.id).length}`,
-        `${edges.filter((x) => x.type === "certifies" && x.to?.includes(profile.id.split(".").at(-1) || "")).length}`,
-        `\`${profile.state}\``,
+        `${required(profile.id).length}`,
+        `${certified(profile.id)}`,
+        `\`${certified(profile.id) > 0 ? "provisional" : profile.state}\``,
       ]),
     ),
     "",
@@ -221,6 +230,7 @@ const renderCoverage = (rows: Row[]) =>
       ["requires_edges", `${edges.filter((x) => x.type === "requires").length}`],
       ["checked_by_edges", `${edges.filter((x) => x.type === "checked_by").length}`],
       ["certifies_edges", `${edges.filter((x) => x.type === "certifies").length}`],
+      ["profile_certifications", `${edges.filter((x) => x.type === "certifies" && x.to?.startsWith("profile.")).length}`],
     ]
     return [
       `> ${quote}`,

@@ -36,6 +36,7 @@ const snap = async () => {
     ...(await list("evidence/traceability/opencode_source.tui_certified.*.jsonl")),
     ...(await list("evidence/traceability/opencode_source.integrations_canonical.*.jsonl")),
     ...(await list("evidence/traceability/opencode_source.security_critical.*.jsonl")),
+    ...(await list("evidence/traceability/opencode_source.profile.*.json")),
   ]
   const out: Record<string, string> = {}
   for (const path of files) out[path] = await hash(path)
@@ -61,6 +62,7 @@ const main = async () => {
   await run(["bun", "script/integrations-certify.ts", "--write"])
   await run(["bun", "script/security-commute.ts", "--write"])
   await run(["bun", "script/security-certify.ts", "--write"])
+  await run(["bun", "script/profile-certify.ts", "--write"])
   const after = await snap()
   const files = [...new Set([...before.files, ...after.files])].sort()
   const changed = files.filter((path) => before.out[path] !== after.out[path])

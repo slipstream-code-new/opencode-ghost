@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "schema.profile_certification",
+  "status": "draft",
+  "summary": "Aggregate profile certification summary over case-level conformance-kit transcripts.",
+  "required_fields": [
+    "schema_version",
+    "artifact_family",
+    "implementation_id",
+    "profile_id",
+    "source_commit",
+    "status",
+    "case_ids",
+    "transcript_paths"
+  ],
+  "status": {
+    "kind": "enum",
+    "values": [
+      "pass",
+      "fail"
+    ]
+  }
+}

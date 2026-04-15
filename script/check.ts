@@ -15,7 +15,7 @@ const read = async (path: string) => Bun.file(path).text()
 const rel = (path: string) => relative(root, path)
 
 const checkJson = async () => {
-  const files = await list("{contracts,graph,model,tests}/**/*.json")
+  const files = await list("{contracts,evidence,graph,model,tests}/**/*.json")
   for (const path of files) JSON.parse(await read(path))
   return files
 }

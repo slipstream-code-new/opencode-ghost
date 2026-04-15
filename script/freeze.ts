@@ -36,6 +36,7 @@ const render = async () => {
   const profileCoverage = profiles.map((id) => ({
     id,
     has_requirements: edges.some((x) => x.type === "requires" && x.from === id),
+    certified: edges.some((x) => x.type === "certifies" && x.to === id),
   }))
   const result = {
     stage: "bootstrap",
@@ -47,7 +48,7 @@ const render = async () => {
     },
     frozen:
       surfaces.every((x) => commutingClaims.has(x) && certifiedClaims.has(x)) &&
-      profileCoverage.every((x) => x.has_requirements),
+      profileCoverage.every((x) => x.has_requirements && x.certified),
   }
   return `${JSON.stringify(result, null, 2)}\n`
 }

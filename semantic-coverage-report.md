@@ -13,7 +13,8 @@
 | source_certified_claims | 12 |
 | requires_edges | 27 |
 | checked_by_edges | 29 |
-| certifies_edges | 13 |
+| certifies_edges | 18 |
+| profile_certifications | 6 |
 
 ## Surface Coverage
 
@@ -21,8 +22,8 @@
 | --- | --- | --- |
 | `surface.runtime` | 3 | 1 |
 | `surface.tui` | 2 | 5 |
-| `surface.integrations` | 1 | 0 |
-| `surface.security` | 1 | 0 |
+| `surface.integrations` | 1 | 4 |
+| `surface.security` | 1 | 4 |
 | `surface.kernel` | 1 | 7 |
 
 ## Claim Coverage

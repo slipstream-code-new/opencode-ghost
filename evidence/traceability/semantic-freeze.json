@@ -22,23 +22,28 @@
     "profiles": [
       {
         "id": "profile.core_runtime",
-        "has_requirements": true
+        "has_requirements": true,
+        "certified": true
       },
       {
         "id": "profile.runtime_formal",
-        "has_requirements": true
+        "has_requirements": true,
+        "certified": true
       },
       {
         "id": "profile.tui_certified",
-        "has_requirements": true
+        "has_requirements": true,
+        "certified": true
       },
       {
         "id": "profile.integrations_canonical",
-        "has_requirements": true
+        "has_requirements": true,
+        "certified": true
       },
       {
         "id": "profile.security_critical",
-        "has_requirements": true
+        "has_requirements": true,
+        "certified": true
       }
     ]
   },

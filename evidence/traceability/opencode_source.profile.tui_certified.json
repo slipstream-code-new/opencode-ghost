@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "evidence.profile.certification",
+  "implementation_id": "opencode-source",
+  "profile_id": "tui-certified",
+  "source_commit": "9640d889baa58fa01ed612a6372ba77462f79d9f",
+  "status": "pass",
+  "case_ids": [
+    "witness.tui.command_dialog",
+    "witness.tui.permission_view",
+    "witness.tui.plugin_route_missing",
+    "witness.tui.session_list_dialog",
+    "witness.tui.theme_dialog"
+  ],
+  "observation_kinds": [
+    "state_projection"
+  ],
+  "transcript_paths": [
+    "evidence/traceability/opencode_source.tui_certified.command_dialog.jsonl",
+    "evidence/traceability/opencode_source.tui_certified.permission_view.jsonl",
+    "evidence/traceability/opencode_source.tui_certified.plugin_route_missing.jsonl",
+    "evidence/traceability/opencode_source.tui_certified.session_list_dialog.jsonl",
+    "evidence/traceability/opencode_source.tui_certified.theme_dialog.jsonl"
+  ]
+}

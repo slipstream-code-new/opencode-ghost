@@ -4,20 +4,20 @@
 
 ## Profile Matrix
 
-| Profile | Covers | Requires | Certified | State |
-| --- | --- | --- | --- | --- |
-| `profile.core_runtime` | `surface.runtime` | 3 | 2 | `draft` |
-| `profile.runtime_formal` | `surface.kernel` | 6 | 2 | `draft` |
-| `profile.tui_certified` | `surface.tui` | 10 | 5 | `draft` |
-| `profile.integrations_canonical` | `surface.integrations` | 4 | 0 | `draft` |
-| `profile.security_critical` | `surface.security` | 4 | 0 | `draft` |
-| `profile.full_reference` |  | 0 | 0 | `draft` |
+| Profile | Includes | Covers | Requires | Certified | State |
+| --- | --- | --- | --- | --- | --- |
+| `profile.core_runtime` |  | `surface.runtime` | 3 | 1 | `provisional` |
+| `profile.runtime_formal` |  | `surface.kernel` | 6 | 1 | `provisional` |
+| `profile.tui_certified` |  | `surface.tui` | 10 | 1 | `provisional` |
+| `profile.integrations_canonical` |  | `surface.integrations` | 4 | 1 | `provisional` |
+| `profile.security_critical` |  | `surface.security` | 4 | 1 | `provisional` |
+| `profile.full_reference` | `profile.core_runtime`, `profile.runtime_formal`, `profile.tui_certified`, `profile.integrations_canonical`, `profile.security_critical` |  | 27 | 1 | `provisional` |
 
 ## Artifact Totals
 
 | Type | Count |
 | --- | --- |
-| artifact | 57 |
+| artifact | 65 |
 | claim | 37 |
 | surface | 5 |
 | profile | 6 |
