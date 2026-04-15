@@ -8,19 +8,19 @@
 | --- | --- |
 | surfaces | 5 |
 | profiles | 6 |
-| claims | 22 |
-| commuting_claims | 3 |
-| source_certified_claims | 5 |
-| requires_edges | 13 |
-| checked_by_edges | 14 |
-| certifies_edges | 6 |
+| claims | 30 |
+| commuting_claims | 7 |
+| source_certified_claims | 9 |
+| requires_edges | 21 |
+| checked_by_edges | 22 |
+| certifies_edges | 10 |
 
 ## Surface Coverage
 
 | Surface | Profiles | Claims |
 | --- | --- | --- |
 | `surface.runtime` | 3 | 0 |
-| `surface.tui` | 2 | 1 |
+| `surface.tui` | 2 | 5 |
 | `surface.integrations` | 1 | 0 |
 | `surface.security` | 1 | 0 |
 | `surface.kernel` | 1 | 7 |
@@ -43,6 +43,14 @@
 | `claim.runtime.source_certified.permission_reject` | `operational` | 1 | `provisional` |
 | `claim.tui.commuting.permission_view` | `operational` | 1 | `provisional` |
 | `claim.tui.source_certified.permission_view` | `operational` | 1 | `provisional` |
+| `claim.tui.commuting.session_list_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.source_certified.session_list_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.commuting.command_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.source_certified.command_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.commuting.theme_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.source_certified.theme_dialog` | `operational` | 1 | `provisional` |
+| `claim.tui.commuting.plugin_route_missing` | `operational` | 1 | `provisional` |
+| `claim.tui.source_certified.plugin_route_missing` | `operational` | 1 | `provisional` |
 | `claim.normalization.runtime_laws` | `operational` | 1 | `provisional` |
 | `claim.normalization.tui_laws` | `operational` | 1 | `provisional` |
 | `claim.integrations.providers_commuting` | `operational` | 1 | `provisional` |

@@ -11,8 +11,8 @@
 | `artifact.script.check` | `script/check.ts` | `harness` | Validation script for JSON artifacts, graph references, and required paths. |
 | `artifact.script.commute_runtime` | `script/commute.ts` | `abstraction,harness` | Machine-checks the permission-cycle commuting diagram for the runtime witness slice. |
 | `artifact.script.certify_runtime` | `script/certify.ts` | `harness` | Builds the runtime-formal source-first certification transcript. |
-| `artifact.script.commute_tui` | `script/tui-commute.ts` | `abstraction,normalization,harness` | Machine-checks the permission-view commuting diagram for the certified TUI witness slice. |
-| `artifact.script.certify_tui` | `script/tui-certify.ts` | `harness` | Builds the TUI-certified source-first certification transcript. |
+| `artifact.script.commute_tui` | `script/tui-commute.ts` | `abstraction,normalization,harness` | Machine-checks the commuting diagrams for the certified TUI case set. |
+| `artifact.script.certify_tui` | `script/tui-certify.ts` | `harness` | Builds the TUI-certified source-first certification transcripts for the promoted case set. |
 | `artifact.script.verify_all` | `verify-all` | `environment,harness` | Pinned verification entrypoint invoking all phase hooks in deterministic order. |
 | `artifact.script.normalize` | `script/normalize.ts` | `normalization,harness` | Validates determinism, idempotence, monotonic erasure, and semantic preservation for runtime and TUI normalizers. |
 | `artifact.script.determinism` | `script/determinism.ts` | `environment,harness` | Checks that generated inventories, reports, evidence, and certification transcripts are byte-stable across regeneration. |

@@ -4,9 +4,14 @@ import { join } from "node:path"
 
 const root = join(import.meta.dir, "..")
 const mode = process.argv.includes("--write") ? "write" : "check"
-const target = "evidence/traceability/commuting.tui.permission_view.json"
 
 const readJson = async <T>(path: string) => (await Bun.file(join(root, path)).json()) as T
+const list = async (glob: string) => {
+  const out: string[] = []
+  for await (const path of new Bun.Glob(glob).scan({ cwd: root })) out.push(path)
+  return out.sort()
+}
+const slug = (id: string) => id.split(".").slice(2).join("_")
 
 type Witness = {
   case_id: string
@@ -64,17 +69,16 @@ type Inventory = {
   }[]
 }
 
-const render = async () => {
-  const witness = await readJson<Witness>("tests/tui/witness.json")
-  const tuiCase = await readJson<TuiCase>("contracts/tui/cases/witness.permission_view.json")
+const render = async (path: string) => {
+  const tuiCase = await readJson<TuiCase>(path)
+  const witness = await readJson<Witness>(`tests/tui/${slug(tuiCase.case_id)}.json`)
   const certified = await readJson<Certified>("contracts/tui/certified.json")
   const surfaces = await readJson<Inventory>("contracts/tui/inventory/surfaces.json")
   const tests = await readJson<Inventory>("contracts/tui/inventory/tests.json")
+  const matched = certified.screens.filter((screen) => tuiCase.expect.payload.screens.includes(screen.id))
   const actual = {
-    screens: certified.screens
-      .filter((screen) => ["tui.screen.session", "tui.screen.permission"].includes(screen.id))
-      .map((screen) => screen.id),
-    layers: [...new Set(certified.screens.flatMap((screen) => screen.layers))].sort(),
+    screens: matched.map((screen) => screen.id),
+    layers: [...new Set(matched.flatMap((screen) => screen.layers))].sort(),
     matrix: certified.matrix,
   }
   const missingSurfaces = tuiCase.required_surfaces.filter(
@@ -126,18 +130,25 @@ const render = async () => {
         ? "pass"
         : "fail",
   }
-  return `${JSON.stringify(payload, null, 2)}\n`
+  return [slug(tuiCase.case_id), `${JSON.stringify(payload, null, 2)}\n`] as const
 }
 
 const main = async () => {
-  const want = await render()
-  if (mode === "write") {
-    await Bun.write(join(root, target), want)
-    return
+  const cases = await list("contracts/tui/cases/*.json")
+  let bad = false
+  for (const path of cases) {
+    const [name, want] = await render(path)
+    const target = `evidence/traceability/commuting.tui.${name}.json`
+    if (mode === "write") {
+      await Bun.write(join(root, target), want)
+      continue
+    }
+    const got = await Bun.file(join(root, target)).text()
+    if (got === want) continue
+    console.error(`stale TUI commuting evidence: ${target}`)
+    bad = true
   }
-  const got = await Bun.file(join(root, target)).text()
-  if (got === want) return
-  throw new Error(`stale TUI commuting evidence: ${target}`)
+  if (bad) process.exit(1)
 }
 
 await main()

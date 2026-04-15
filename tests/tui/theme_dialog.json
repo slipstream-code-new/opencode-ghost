@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "test.tui.witness",
+  "status": "draft",
+  "bootstrap": true,
+  "case_id": "witness.tui.theme_dialog",
+  "profile_id": "tui-certified",
+  "world_id": "world.minimal_repo",
+  "goal": "Certified witness for the theme dialog surface.",
+  "required_surfaces": [
+    "session",
+    "theme_dialog"
+  ],
+  "required_tui_routes": [
+    "tui.file.thread",
+    "tui.file.dialog_theme_list"
+  ],
+  "required_tests": [
+    "tui.test.theme_store_test_ts",
+    "tui.test.plugin_loader_test_ts"
+  ],
+  "surfaces": [
+    "session",
+    "theme_dialog"
+  ],
+  "layers": [
+    "interaction",
+    "layout",
+    "frame"
+  ]
+}

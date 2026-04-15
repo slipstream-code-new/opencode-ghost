@@ -1,0 +1,64 @@
+{
+  "case_id": "witness.tui.command_dialog",
+  "profile_id": "tui-certified",
+  "observation_space": {
+    "projection": "certified_tui_projection",
+    "equivalence": "exact_json",
+    "normalization": "identity"
+  },
+  "checks": {
+    "witness_matches_case": true,
+    "surfaces_present": true,
+    "tests_present": true,
+    "projection_matches_expectation": true
+  },
+  "actual": {
+    "screens": [
+      "tui.screen.session",
+      "tui.screen.command_dialog"
+    ],
+    "layers": [
+      "frame",
+      "interaction",
+      "layout"
+    ],
+    "matrix": {
+      "sizes": [
+        "120x40",
+        "160x48"
+      ],
+      "theme": "opencode",
+      "modes": [
+        "dark",
+        "light"
+      ],
+      "platform": "linux-truecolor"
+    }
+  },
+  "expect": {
+    "screens": [
+      "tui.screen.session",
+      "tui.screen.command_dialog"
+    ],
+    "layers": [
+      "frame",
+      "interaction",
+      "layout"
+    ],
+    "matrix": {
+      "sizes": [
+        "120x40",
+        "160x48"
+      ],
+      "theme": "opencode",
+      "modes": [
+        "dark",
+        "light"
+      ],
+      "platform": "linux-truecolor"
+    }
+  },
+  "missing_surfaces": [],
+  "missing_tests": [],
+  "status": "pass"
+}

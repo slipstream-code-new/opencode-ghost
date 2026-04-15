@@ -46,48 +46,77 @@ fn load<T: for<'de> Deserialize<'de>>(path: &str) -> Result<T, String> {
     serde_json::from_str(&body).map_err(|err| format!("{path}: {err}"))
 }
 
+fn list(dir: &str) -> Result<Vec<PathBuf>, String> {
+    let mut out: Vec<_> = fs::read_dir(root().join(dir))
+        .map_err(|err| format!("{dir}: {err}"))?
+        .filter_map(|item| item.ok().map(|x| x.path()))
+        .filter(|path| path.extension().and_then(|x| x.to_str()) == Some("json"))
+        .collect();
+    out.sort();
+    Ok(out)
+}
+
+fn rel(path: &PathBuf) -> String {
+    path.strip_prefix(root())
+        .unwrap()
+        .to_string_lossy()
+        .to_string()
+}
+
+fn slug(id: &str, n: usize) -> String {
+    let parts: Vec<_> = id.split('.').collect();
+    if n == 0 {
+        return parts.get(2..).unwrap_or(&parts).join("_");
+    }
+    parts[parts.len().saturating_sub(n)..].join("_")
+}
+
 fn runtime() -> Result<(), String> {
-    let case: RuntimeCase = load("contracts/runtime/cases/witness.permission_cycle.json")?;
-    let evidence: Commute = load("evidence/traceability/commuting.runtime.permission_cycle.json")?;
-    if case.case_id != evidence.case_id {
-        return Err("runtime case/evidence id mismatch".into());
+    for path in list("contracts/runtime/cases")? {
+        let case: RuntimeCase = load(&rel(&path))?;
+        let evidence: Commute = load(&format!("evidence/traceability/commuting.runtime.{}.json", slug(&case.case_id, 1)))?;
+        if case.case_id != evidence.case_id {
+            return Err("runtime case/evidence id mismatch".into());
+        }
+        if evidence.status != "pass" {
+            return Err("runtime commuting evidence is not passing".into());
+        }
+        if case.expect.payload != evidence.actual {
+            return Err("runtime case expectation does not match Rust-parsed evidence".into());
+        }
+        println!("{}", serde_json::to_string_pretty(&evidence.actual).unwrap());
     }
-    if evidence.status != "pass" {
-        return Err("runtime commuting evidence is not passing".into());
-    }
-    if case.expect.payload != evidence.actual {
-        return Err("runtime case expectation does not match Rust-parsed evidence".into());
-    }
-    println!("{}", serde_json::to_string_pretty(&evidence.actual).unwrap());
     Ok(())
 }
 
 fn tui() -> Result<(), String> {
-    let case: TuiCase = load("contracts/tui/cases/witness.permission_view.json")?;
-    let evidence: Commute = load("evidence/traceability/commuting.tui.permission_view.json")?;
-    if case.case_id != evidence.case_id {
-        return Err("tui case/evidence id mismatch".into());
+    for path in list("contracts/tui/cases")? {
+        let case: TuiCase = load(&rel(&path))?;
+        let evidence: Commute = load(&format!("evidence/traceability/commuting.tui.{}.json", slug(&case.case_id, 0)))?;
+        if case.case_id != evidence.case_id {
+            return Err("tui case/evidence id mismatch".into());
+        }
+        if evidence.status != "pass" {
+            return Err("tui commuting evidence is not passing".into());
+        }
+        let mut layers = case
+            .expect
+            .payload
+            .get("layers")
+            .and_then(|x| x.as_array())
+            .cloned()
+            .unwrap_or_default();
+        layers.sort_by_key(|x| x.as_str().unwrap_or_default().to_string());
+        let expected = json!({
+            "screens": case.expect.payload.get("screens").cloned().unwrap_or(Value::Null),
+            "layers": layers,
+            "matrix": case.expect.payload.get("matrix").cloned().unwrap_or(Value::Null),
+        });
+        if expected != evidence.actual {
+            return Err("tui case expectation does not match Rust-parsed evidence".into());
+        }
+        println!("{}", serde_json::to_string_pretty(&evidence.actual).unwrap());
     }
-    if evidence.status != "pass" {
-        return Err("tui commuting evidence is not passing".into());
-    }
-    let mut layers = case
-        .expect
-        .payload
-        .get("layers")
-        .and_then(|x| x.as_array())
-        .cloned()
-        .unwrap_or_default();
-    layers.sort_by_key(|x| x.as_str().unwrap_or_default().to_string());
-    let expected = json!({
-        "screens": case.expect.payload.get("screens").cloned().unwrap_or(Value::Null),
-        "layers": layers,
-        "matrix": case.expect.payload.get("matrix").cloned().unwrap_or(Value::Null),
-    });
-    if expected != evidence.actual {
-        return Err("tui case expectation does not match Rust-parsed evidence".into());
-    }
-    println!("{}", serde_json::to_string_pretty(&evidence.actual).unwrap());
     Ok(())
 }
 

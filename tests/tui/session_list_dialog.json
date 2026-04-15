@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "test.tui.witness",
+  "status": "draft",
+  "bootstrap": true,
+  "case_id": "witness.tui.session_list_dialog",
+  "profile_id": "tui-certified",
+  "world_id": "world.minimal_repo",
+  "goal": "Certified witness for the session list dialog over the session surface.",
+  "required_surfaces": [
+    "session",
+    "session_list_dialog"
+  ],
+  "required_tui_routes": [
+    "tui.file.thread",
+    "tui.file.dialog_session_list"
+  ],
+  "required_tests": [
+    "tui.test.thread_test_ts"
+  ],
+  "surfaces": [
+    "session",
+    "session_list_dialog"
+  ],
+  "layers": [
+    "interaction",
+    "layout",
+    "frame"
+  ]
+}

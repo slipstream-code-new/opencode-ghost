@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "test.tui.witness",
+  "status": "draft",
+  "bootstrap": true,
+  "case_id": "witness.tui.plugin_route_missing",
+  "profile_id": "tui-certified",
+  "world_id": "world.minimal_repo",
+  "goal": "Certified witness for the plugin-route missing fallback surface.",
+  "required_surfaces": [
+    "plugin_route_missing"
+  ],
+  "required_tui_routes": [
+    "tui.file.plugin_route_missing"
+  ],
+  "required_tests": [
+    "tui.test.plugin_loader_test_ts"
+  ],
+  "surfaces": [
+    "plugin_route_missing"
+  ],
+  "layers": [
+    "interaction",
+    "layout",
+    "frame"
+  ]
+}

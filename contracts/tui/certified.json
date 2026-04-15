@@ -33,6 +33,42 @@
         "frame"
       ],
       "source_hint": "packages/opencode/src/server/instance/tui.ts"
+    },
+    {
+      "id": "tui.screen.session_list_dialog",
+      "layers": [
+        "interaction",
+        "layout",
+        "frame"
+      ],
+      "source_hint": "packages/opencode/src/cli/cmd/tui/component/dialog-session-list.tsx"
+    },
+    {
+      "id": "tui.screen.command_dialog",
+      "layers": [
+        "interaction",
+        "layout",
+        "frame"
+      ],
+      "source_hint": "packages/opencode/src/cli/cmd/tui/component/dialog-command.tsx"
+    },
+    {
+      "id": "tui.screen.theme_dialog",
+      "layers": [
+        "interaction",
+        "layout",
+        "frame"
+      ],
+      "source_hint": "packages/opencode/src/cli/cmd/tui/component/dialog-theme-list.tsx"
+    },
+    {
+      "id": "tui.screen.plugin_route_missing",
+      "layers": [
+        "interaction",
+        "layout",
+        "frame"
+      ],
+      "source_hint": "packages/opencode/src/cli/cmd/tui/component/plugin-route-missing.tsx"
     }
   ]
 }

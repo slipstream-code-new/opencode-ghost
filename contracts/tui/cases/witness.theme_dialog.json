@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "contract.tui.case",
+  "status": "provisional",
+  "case_id": "witness.tui.theme_dialog",
+  "profile_id": "tui-certified",
+  "world_id": "world.minimal_repo",
+  "input": {
+    "kind": "tui_projection",
+    "surfaces": [
+      "session",
+      "theme_dialog"
+    ],
+    "layers": [
+      "interaction",
+      "layout",
+      "frame"
+    ]
+  },
+  "expect": {
+    "kind": "projection",
+    "surface": "surface.tui",
+    "observation_space": {
+      "projection": "certified_tui_projection",
+      "equivalence": "exact_json",
+      "normalization": "identity"
+    },
+    "payload": {
+      "screens": [
+        "tui.screen.session",
+        "tui.screen.theme_dialog"
+      ],
+      "layers": [
+        "interaction",
+        "layout",
+        "frame"
+      ],
+      "matrix": {
+        "sizes": [
+          "120x40",
+          "160x48"
+        ],
+        "theme": "opencode",
+        "modes": [
+          "dark",
+          "light"
+        ],
+        "platform": "linux-truecolor"
+      }
+    }
+  },
+  "required_surfaces": [
+    "tui.file.thread",
+    "tui.file.dialog_theme_list"
+  ],
+  "required_tests": [
+    "tui.test.theme_store_test_ts",
+    "tui.test.plugin_loader_test_ts"
+  ]
+}

@@ -6,7 +6,7 @@
   "tui_surface_count": 98,
   "tui_test_count": 14,
   "runtime_witness": "witness.runtime.permission_cycle",
-  "tui_witness": "witness.tui.permission_view",
+  "tui_witness": "witness.tui.command_dialog",
   "required_runtime_routes": [
     "session.create",
     "session.prompt",
@@ -15,11 +15,16 @@
   ],
   "required_tui_surfaces": [
     "tui.file.thread",
-    "tui.file.dialog_session_list"
+    "tui.file.dialog_command",
+    "tui.file.dialog_session_list",
+    "tui.file.plugin_route_missing",
+    "tui.file.dialog_theme_list"
   ],
   "required_tui_tests": [
     "tui.test.thread_test_ts",
-    "tui.test.transcript_test_ts"
+    "tui.test.transcript_test_ts",
+    "tui.test.plugin_loader_test_ts",
+    "tui.test.theme_store_test_ts"
   ],
   "runtime_cases": [
     {
@@ -45,6 +50,17 @@
   ],
   "tui_cases": [
     {
+      "case_id": "witness.tui.command_dialog",
+      "profile_id": "tui-certified",
+      "required_surfaces": [
+        "tui.file.thread",
+        "tui.file.dialog_command"
+      ],
+      "required_tests": [
+        "tui.test.thread_test_ts"
+      ]
+    },
+    {
       "case_id": "witness.tui.permission_view",
       "profile_id": "tui-certified",
       "required_surfaces": [
@@ -54,6 +70,39 @@
       "required_tests": [
         "tui.test.thread_test_ts",
         "tui.test.transcript_test_ts"
+      ]
+    },
+    {
+      "case_id": "witness.tui.plugin_route_missing",
+      "profile_id": "tui-certified",
+      "required_surfaces": [
+        "tui.file.plugin_route_missing"
+      ],
+      "required_tests": [
+        "tui.test.plugin_loader_test_ts"
+      ]
+    },
+    {
+      "case_id": "witness.tui.session_list_dialog",
+      "profile_id": "tui-certified",
+      "required_surfaces": [
+        "tui.file.thread",
+        "tui.file.dialog_session_list"
+      ],
+      "required_tests": [
+        "tui.test.thread_test_ts"
+      ]
+    },
+    {
+      "case_id": "witness.tui.theme_dialog",
+      "profile_id": "tui-certified",
+      "required_surfaces": [
+        "tui.file.thread",
+        "tui.file.dialog_theme_list"
+      ],
+      "required_tests": [
+        "tui.test.theme_store_test_ts",
+        "tui.test.plugin_loader_test_ts"
       ]
     }
   ]

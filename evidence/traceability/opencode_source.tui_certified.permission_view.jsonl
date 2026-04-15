@@ -2,7 +2,7 @@
 {"kind":"capabilities","supported_profiles":["tui-certified"],"supported_transports":["file_path"],"supported_observations":["interaction","layout","frame","state_projection"]}
 {"kind":"profile_request","profile_id":"tui-certified"}
 {"kind":"profile_response","profile_id":"tui-certified","accepted":true}
-{"kind":"case_offer","case_id":"witness.tui.permission_view","profile_id":"tui-certified","schema_family":"contract.tui.case","payload":{"path":"contracts/tui/cases/witness.permission_view.json","required_tui_surfaces":["session","permission"],"required_tui_tests":["tui.test.thread_test_ts","tui.test.transcript_test_ts"]}}
+{"kind":"case_offer","case_id":"witness.tui.permission_view","profile_id":"tui-certified","schema_family":"contract.tui.case","payload":{"path":"contracts/tui/cases/witness.permission_view.json","required_tui_surfaces":["tui.file.thread","tui.file.dialog_session_list"],"required_tui_tests":["tui.test.thread_test_ts","tui.test.transcript_test_ts"]}}
 {"kind":"case_accept","case_id":"witness.tui.permission_view","accepted":true}
 {"kind":"checkpoint","case_id":"witness.tui.permission_view","seq":1,"observation_kind":"state_projection","payload":{"screens":["tui.screen.session","tui.screen.permission"],"layers":["frame","interaction","layout"],"matrix":{"sizes":["120x40","160x48"],"theme":"opencode","modes":["dark","light"],"platform":"linux-truecolor"}}}
 {"kind":"verdict","case_id":"witness.tui.permission_view","status":"pass","evidence":"evidence/traceability/commuting.tui.permission_view.json"}

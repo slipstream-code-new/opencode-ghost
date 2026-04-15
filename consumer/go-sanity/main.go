@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 )
 
 type runtimeCase struct {
@@ -27,18 +28,53 @@ func load(path string, out any) error {
 	return json.Unmarshal(body, out)
 }
 
+func list(dir string) ([]string, error) {
+	root, err := os.Getwd()
+	if err != nil {
+		return nil, err
+	}
+	items, err := os.ReadDir(filepath.Join(root, "..", "..", dir))
+	if err != nil {
+		return nil, err
+	}
+	out := []string{}
+	for _, item := range items {
+		if item.IsDir() || filepath.Ext(item.Name()) != ".json" {
+			continue
+		}
+		out = append(out, filepath.Join(dir, item.Name()))
+	}
+	sort.Strings(out)
+	return out, nil
+}
+
 func main() {
-	var runtime runtimeCase
-	var tui tuiCase
-	if err := load("contracts/runtime/cases/witness.permission_cycle.json", &runtime); err != nil {
+	runtimePaths, err := list("contracts/runtime/cases")
+	if err != nil {
 		panic(err)
 	}
-	if err := load("contracts/tui/cases/witness.permission_view.json", &tui); err != nil {
+	tuiPaths, err := list("contracts/tui/cases")
+	if err != nil {
 		panic(err)
 	}
-	if runtime.CaseID == "" || tui.CaseID == "" {
-		panic("go sanity consumer failed to parse witness case ids")
+	for _, path := range runtimePaths {
+		var runtime runtimeCase
+		if err := load(path, &runtime); err != nil {
+			panic(err)
+		}
+		if runtime.CaseID == "" {
+			panic("go sanity consumer failed to parse runtime case id")
+		}
+		fmt.Printf("runtime=%s\n", runtime.CaseID)
 	}
-	fmt.Printf("runtime=%s\n", runtime.CaseID)
-	fmt.Printf("tui=%s\n", tui.CaseID)
+	for _, path := range tuiPaths {
+		var tui tuiCase
+		if err := load(path, &tui); err != nil {
+			panic(err)
+		}
+		if tui.CaseID == "" {
+			panic("go sanity consumer failed to parse tui case id")
+		}
+		fmt.Printf("tui=%s\n", tui.CaseID)
+	}
 }
