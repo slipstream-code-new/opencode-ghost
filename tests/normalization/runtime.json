@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "test.normalization.runtime",
+  "status": "provisional",
+  "cases": [
+    {
+      "id": "runtime.determine.identity_fields",
+      "input": {
+        "created": true,
+        "phase": "idle",
+        "permission": "approved",
+        "events": 6,
+        "timestamp": "2026-04-15T12:00:00Z",
+        "run_id": "run-123",
+        "path": "/tmp/opencode/session-a"
+      },
+      "expected": {
+        "created": true,
+        "phase": "idle",
+        "permission": "approved",
+        "events": 6
+      }
+    },
+    {
+      "id": "runtime.preserve.semantic_difference",
+      "left": {
+        "created": true,
+        "phase": "idle",
+        "permission": "approved",
+        "events": 6,
+        "timestamp": "2026-04-15T12:00:00Z"
+      },
+      "right": {
+        "created": true,
+        "phase": "waiting",
+        "permission": "pending",
+        "events": 6,
+        "timestamp": "2026-04-15T12:00:00Z"
+      },
+      "expect_equal": false
+    }
+  ]
+}

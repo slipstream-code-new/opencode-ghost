@@ -1,0 +1,105 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "test.normalization.tui",
+  "status": "provisional",
+  "cases": [
+    {
+      "id": "tui.erase.transient_style_noise",
+      "input": {
+        "screens": [
+          "tui.screen.session",
+          "tui.screen.permission"
+        ],
+        "layers": [
+          "layout",
+          "frame",
+          "interaction"
+        ],
+        "matrix": {
+          "sizes": [
+            "120x40",
+            "160x48"
+          ],
+          "theme": {
+            "token": "opencode",
+            "rgb": "#ffffff"
+          },
+          "modes": [
+            "dark",
+            "light"
+          ],
+          "platform": "linux-truecolor"
+        },
+        "cursor_blink": true,
+        "loading_text": "thinking..."
+      },
+      "expected": {
+        "screens": [
+          "tui.screen.session",
+          "tui.screen.permission"
+        ],
+        "layers": [
+          "frame",
+          "interaction",
+          "layout"
+        ],
+        "matrix": {
+          "sizes": [
+            "120x40",
+            "160x48"
+          ],
+          "theme": "opencode",
+          "modes": [
+            "dark",
+            "light"
+          ],
+          "platform": "linux-truecolor"
+        }
+      }
+    },
+    {
+      "id": "tui.preserve.semantic_difference",
+      "left": {
+        "screens": [
+          "tui.screen.session"
+        ],
+        "layers": [
+          "frame",
+          "interaction",
+          "layout"
+        ],
+        "matrix": {
+          "sizes": [
+            "120x40"
+          ],
+          "theme": "opencode",
+          "modes": [
+            "dark"
+          ],
+          "platform": "linux-truecolor"
+        }
+      },
+      "right": {
+        "screens": [
+          "tui.screen.permission"
+        ],
+        "layers": [
+          "frame",
+          "interaction",
+          "layout"
+        ],
+        "matrix": {
+          "sizes": [
+            "120x40"
+          ],
+          "theme": "opencode",
+          "modes": [
+            "dark"
+          ],
+          "platform": "linux-truecolor"
+        }
+      },
+      "expect_equal": false
+    }
+  ]
+}

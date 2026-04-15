@@ -16,6 +16,9 @@
 | `artifact.script.commute_tui` | `artifact` | `normative` | `provisional` | `script/tui-commute.ts` |
 | `artifact.script.certify_tui` | `artifact` | `normative` | `provisional` | `script/tui-certify.ts` |
 | `artifact.script.verify_all` | `artifact` | `normative` | `provisional` | `verify-all` |
+| `artifact.script.normalize` | `artifact` | `normative` | `provisional` | `script/normalize.ts` |
+| `artifact.test.normalization_runtime` | `artifact` | `normative` | `provisional` | `tests/normalization/runtime.json` |
+| `artifact.test.normalization_tui` | `artifact` | `normative` | `provisional` | `tests/normalization/tui.json` |
 | `artifact.policy.classification` | `policy` | `normative` | `provisional` |  |
 | `artifact.policy.promotion` | `policy` | `normative` | `provisional` |  |
 | `profile.core_runtime` | `profile` | `normative` | `draft` |  |
@@ -49,6 +52,8 @@
 | `claim.runtime.source_certified.permission_cycle` | `claim` | `normative` | `provisional` |  |
 | `claim.tui.commuting.permission_view` | `claim` | `normative` | `provisional` |  |
 | `claim.tui.source_certified.permission_view` | `claim` | `normative` | `provisional` |  |
+| `claim.normalization.runtime_laws` | `claim` | `normative` | `provisional` |  |
+| `claim.normalization.tui_laws` | `claim` | `normative` | `provisional` |  |
 | `report.claims_ledger` | `report` | `generated` | `draft` | `claims-ledger.md` |
 | `report.formalization_inventory` | `report` | `generated` | `draft` | `formalization-inventory.md` |
 | `report.completeness_matrix` | `report` | `generated` | `draft` | `completeness-matrix.md` |

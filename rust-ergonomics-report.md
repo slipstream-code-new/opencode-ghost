@@ -16,3 +16,5 @@
 - `claim.runtime.source_certified.permission_cycle`: The original opencode source tree satisfies the runtime-formal witness slice under the conformance-kit protocol transcript.
 - `claim.tui.commuting.permission_view`: The canonical TUI witness projects to the same certified screen and matrix observation across the witness definition, certified contract, and extracted inventories.
 - `claim.tui.source_certified.permission_view`: The original opencode source tree satisfies the TUI-certified witness slice under the conformance-kit protocol transcript.
+- `claim.normalization.runtime_laws`: Runtime normalization satisfies determinism, idempotence, monotonic erasure, and semantic preservation on adversarial fixtures.
+- `claim.normalization.tui_laws`: TUI normalization satisfies determinism, idempotence, monotonic erasure, and semantic preservation on adversarial fixtures.

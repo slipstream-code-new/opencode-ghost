@@ -14,13 +14,14 @@
 | `artifact.script.commute_tui` | `script/tui-commute.ts` | `abstraction,normalization,harness` | Machine-checks the permission-view commuting diagram for the certified TUI witness slice. |
 | `artifact.script.certify_tui` | `script/tui-certify.ts` | `harness` | Builds the TUI-certified source-first certification transcript. |
 | `artifact.script.verify_all` | `verify-all` | `environment,harness` | Pinned verification entrypoint invoking all phase hooks in deterministic order. |
+| `artifact.script.normalize` | `script/normalize.ts` | `normalization,harness` | Validates determinism, idempotence, monotonic erasure, and semantic preservation for runtime and TUI normalizers. |
 
 ## Summary
 
 | Class | Count |
 | --- | --- |
-| trusted_artifacts | 8 |
+| trusted_artifacts | 9 |
 | abstraction_bound | 2 |
-| harness_bound | 8 |
+| harness_bound | 9 |
 | environment_bound | 2 |
-| normalization_bound | 1 |
+| normalization_bound | 2 |
