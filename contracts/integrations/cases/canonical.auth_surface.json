@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "contract.integrations.case",
+  "status": "provisional",
+  "case_id": "witness.integrations.auth_surface",
+  "profile_id": "integrations-canonical",
+  "world_id": "world.minimal_repo",
+  "expect": {
+    "kind": "provider_inventory",
+    "observation_space": {
+      "projection": "auth_surface_projection",
+      "equivalence": "set_and_path_equality",
+      "normalization": "identity"
+    },
+    "payload": {
+      "required_dependencies": [
+        "@gitlab/opencode-gitlab-auth",
+        "@openauthjs/openauth",
+        "google-auth-library"
+      ],
+      "required_files": [
+        "packages/opencode/src/provider/auth.ts",
+        "packages/opencode/src/provider/schema.ts"
+      ]
+    }
+  }
+}

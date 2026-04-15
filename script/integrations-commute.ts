@@ -4,9 +4,14 @@ import { join } from "node:path"
 
 const root = join(import.meta.dir, "..")
 const mode = process.argv.includes("--write") ? "write" : "check"
-const target = "evidence/traceability/commuting.integrations.providers.json"
 
 const readJson = async <T>(path: string) => (await Bun.file(join(root, path)).json()) as T
+const list = async (glob: string) => {
+  const out: string[] = []
+  for await (const path of new Bun.Glob(glob).scan({ cwd: root })) out.push(path)
+  return out.sort()
+}
+const slug = (id: string) => id.split(".").slice(2).join("_")
 
 type Providers = {
   dependencies: string[]
@@ -25,9 +30,9 @@ type Case = {
   }
 }
 
-const render = async () => {
+const render = async (path: string) => {
   const providers = await readJson<Providers>("contracts/integrations/inventory/providers.json")
-  const integrationCase = await readJson<Case>("contracts/integrations/cases/canonical.providers.json")
+  const integrationCase = await readJson<Case>(path)
   const missingDependencies = integrationCase.expect.payload.required_dependencies.filter(
     (x) => !providers.dependencies.includes(x),
   )
@@ -46,18 +51,25 @@ const render = async () => {
     missing_files: missingFiles,
     status: missingDependencies.length === 0 && missingFiles.length === 0 ? "pass" : "fail",
   }
-  return `${JSON.stringify(payload, null, 2)}\n`
+  return [slug(integrationCase.case_id), `${JSON.stringify(payload, null, 2)}\n`] as const
 }
 
 const main = async () => {
-  const want = await render()
-  if (mode === "write") {
-    await Bun.write(join(root, target), want)
-    return
+  const cases = await list("contracts/integrations/cases/*.json")
+  let bad = false
+  for (const path of cases) {
+    const [name, want] = await render(path)
+    const target = `evidence/traceability/commuting.integrations.${name}.json`
+    if (mode === "write") {
+      await Bun.write(join(root, target), want)
+      continue
+    }
+    const got = await Bun.file(join(root, target)).text()
+    if (got === want) continue
+    console.error(`stale integrations commuting evidence: ${target}`)
+    bad = true
   }
-  const got = await Bun.file(join(root, target)).text()
-  if (got === want) return
-  throw new Error(`stale integrations commuting evidence: ${target}`)
+  if (bad) process.exit(1)
 }
 
 await main()

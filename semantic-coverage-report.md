@@ -8,12 +8,12 @@
 | --- | --- |
 | surfaces | 5 |
 | profiles | 6 |
-| claims | 34 |
+| claims | 36 |
 | commuting_claims | 8 |
-| source_certified_claims | 11 |
-| requires_edges | 25 |
-| checked_by_edges | 26 |
-| certifies_edges | 12 |
+| source_certified_claims | 12 |
+| requires_edges | 27 |
+| checked_by_edges | 28 |
+| certifies_edges | 13 |
 
 ## Surface Coverage
 
@@ -57,6 +57,8 @@
 | `claim.normalization.tui_laws` | `operational` | 1 | `provisional` |
 | `claim.integrations.providers_commuting` | `operational` | 1 | `provisional` |
 | `claim.integrations.source_certified.providers` | `operational` | 1 | `provisional` |
+| `claim.integrations.auth_surface_commuting` | `operational` | 1 | `provisional` |
+| `claim.integrations.source_certified.auth_surface` | `operational` | 1 | `provisional` |
 | `claim.security.permission_gating_commuting` | `operational` | 1 | `provisional` |
 | `claim.security.source_certified.permission_gating` | `operational` | 1 | `provisional` |
 | `claim.security.path_operations_commuting` | `operational` | 1 | `provisional` |

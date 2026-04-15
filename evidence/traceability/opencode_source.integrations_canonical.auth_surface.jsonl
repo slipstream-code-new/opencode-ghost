@@ -1,0 +1,8 @@
+{"kind":"hello","protocol_version":"0.1.0","implementation_id":"opencode-source","implementation_version":"9640d889baa58fa01ed612a6372ba77462f79d9f"}
+{"kind":"capabilities","supported_profiles":["integrations-canonical"],"supported_transports":["file_path"],"supported_observations":["provider_inventory"]}
+{"kind":"profile_request","profile_id":"integrations-canonical"}
+{"kind":"profile_response","profile_id":"integrations-canonical","accepted":true}
+{"kind":"case_offer","case_id":"witness.integrations.auth_surface","profile_id":"integrations-canonical","schema_family":"contract.integrations.case","payload":{"path":"contracts/integrations/cases/canonical.auth_surface.json"}}
+{"kind":"case_accept","case_id":"witness.integrations.auth_surface","accepted":true}
+{"kind":"checkpoint","case_id":"witness.integrations.auth_surface","seq":1,"observation_kind":"provider_inventory","payload":{"dependencies":["@gitlab/opencode-gitlab-auth","@openauthjs/openauth","google-auth-library"],"files":["packages/opencode/src/provider/auth.ts","packages/opencode/src/provider/schema.ts"]}}
+{"kind":"verdict","case_id":"witness.integrations.auth_surface","status":"pass","evidence":"evidence/traceability/commuting.integrations.auth_surface.json"}

@@ -1,0 +1,23 @@
+{
+  "case_id": "witness.integrations.auth_surface",
+  "profile_id": "integrations-canonical",
+  "observation_space": {
+    "projection": "auth_surface_projection",
+    "equivalence": "set_and_path_equality",
+    "normalization": "identity"
+  },
+  "actual": {
+    "dependencies": [
+      "@gitlab/opencode-gitlab-auth",
+      "@openauthjs/openauth",
+      "google-auth-library"
+    ],
+    "files": [
+      "packages/opencode/src/provider/auth.ts",
+      "packages/opencode/src/provider/schema.ts"
+    ]
+  },
+  "missing_dependencies": [],
+  "missing_files": [],
+  "status": "pass"
+}
