@@ -2,12 +2,12 @@
   "schema_version": "0.1.0",
   "artifact_family": "evidence.file_classification",
   "summary": {
-    "total": 190,
-    "normative": 121,
+    "total": 193,
+    "normative": 123,
     "informative": 18,
-    "generated": 51,
-    "graph_backed": 107,
-    "heuristic_only": 83
+    "generated": 52,
+    "graph_backed": 134,
+    "heuristic_only": 59
   },
   "files": [
     {
@@ -47,14 +47,18 @@
     {
       "path": "README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.readme"
+      ]
     },
     {
       "path": "VERIFY.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.verify"
+      ]
     },
     {
       "path": "adr/001-source-first-certification.md",
@@ -91,8 +95,10 @@
     {
       "path": "adr/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.adr_index"
+      ]
     },
     {
       "path": "claims-ledger.md",
@@ -113,8 +119,10 @@
     {
       "path": "consumer/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.consumer_readme"
+      ]
     },
     {
       "path": "consumer/go-sanity/go.mod",
@@ -185,8 +193,10 @@
     {
       "path": "contracts/integrations/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.integrations_readme"
+      ]
     },
     {
       "path": "contracts/integrations/cases/canonical.auth_surface.json",
@@ -213,26 +223,34 @@
     {
       "path": "contracts/iut/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.iut_readme"
+      ]
     },
     {
       "path": "contracts/iut/runtime.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.iut.runtime"
+      ]
     },
     {
       "path": "contracts/iut/tui.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.iut.tui"
+      ]
     },
     {
       "path": "contracts/runtime/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.runtime_readme"
+      ]
     },
     {
       "path": "contracts/runtime/cases/witness.permission_cycle.json",
@@ -273,14 +291,18 @@
     {
       "path": "contracts/schema/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.schema_readme"
+      ]
     },
     {
       "path": "contracts/schema/conformance-kit.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.schema.conformance_kit"
+      ]
     },
     {
       "path": "contracts/schema/consumer-certification.json",
@@ -301,32 +323,42 @@
     {
       "path": "contracts/schema/runtime-case.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.schema.runtime_case"
+      ]
     },
     {
       "path": "contracts/schema/tui-frame.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.schema.tui_frame"
+      ]
     },
     {
       "path": "contracts/schema/tui-interaction.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.schema.tui_interaction"
+      ]
     },
     {
       "path": "contracts/schema/tui-layout.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.schema.tui_layout"
+      ]
     },
     {
       "path": "contracts/security/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.security_readme"
+      ]
     },
     {
       "path": "contracts/security/cases/path.operations.json",
@@ -347,8 +379,10 @@
     {
       "path": "contracts/tui/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.tui_readme"
+      ]
     },
     {
       "path": "contracts/tui/cases/witness.command_dialog.json",
@@ -425,8 +459,10 @@
     {
       "path": "contracts/tui/certified.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.contract.tui_certified"
+      ]
     },
     {
       "path": "contracts/tui/inventory/surfaces.json",
@@ -443,20 +479,26 @@
     {
       "path": "contracts/tui/normalization.md",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.contract.tui_normalization"
+      ]
     },
     {
       "path": "contracts/tui/terminal-assumptions.md",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.contract.tui_terminal_assumptions"
+      ]
     },
     {
       "path": "contracts/worlds/README.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.worlds_readme"
+      ]
     },
     {
       "path": "contracts/worlds/corrupted_persisted_state.json",
@@ -721,6 +763,14 @@
       ]
     },
     {
+      "path": "evidence/traceability/file-classification.json",
+      "class": "generated",
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.evidence.file_classification"
+      ]
+    },
+    {
       "path": "evidence/traceability/files.jsonl",
       "class": "generated",
       "graph_backed": false,
@@ -961,14 +1011,18 @@
     {
       "path": "model/runtime/kernel.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.model.runtime_kernel"
+      ]
     },
     {
       "path": "model/tui/seed.json",
       "class": "normative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.model.tui_seed"
+      ]
     },
     {
       "path": "refinement-ledger.md",
@@ -1038,6 +1092,14 @@
       "graph_backed": true,
       "graph_ids": [
         "artifact.script.extract"
+      ]
+    },
+    {
+      "path": "script/file-classify.ts",
+      "class": "normative",
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.script.file_classify"
       ]
     },
     {
@@ -1132,6 +1194,12 @@
     },
     {
       "path": "script/verify/110-integrations.sh",
+      "class": "normative",
+      "graph_backed": false,
+      "graph_ids": []
+    },
+    {
+      "path": "script/verify/115-file-classify.sh",
       "class": "normative",
       "graph_backed": false,
       "graph_ids": []
@@ -1243,8 +1311,10 @@
     {
       "path": "spec-audit.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.spec_audit"
+      ]
     },
     {
       "path": "spec/runtime_witness.qnt",
@@ -1353,8 +1423,10 @@
     {
       "path": "trust-base.md",
       "class": "informative",
-      "graph_backed": false,
-      "graph_ids": []
+      "graph_backed": true,
+      "graph_ids": [
+        "artifact.doc.trust_base"
+      ]
     },
     {
       "path": "verify-all",
