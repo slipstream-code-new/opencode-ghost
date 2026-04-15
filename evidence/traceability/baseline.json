@@ -1,0 +1,24 @@
+{
+  "source_commit": "9640d889baa58fa01ed612a6372ba77462f79d9f",
+  "source_branch": "dev",
+  "route_count": 111,
+  "command_count": 70,
+  "tui_surface_count": 98,
+  "tui_test_count": 14,
+  "runtime_witness": "witness.runtime.permission_cycle",
+  "tui_witness": "witness.tui.permission_view",
+  "required_runtime_routes": [
+    "session.create",
+    "session.prompt",
+    "permission.reply",
+    "session.status"
+  ],
+  "required_tui_surfaces": [
+    "session",
+    "permission"
+  ],
+  "required_tui_tests": [
+    "tui.test.thread_test_ts",
+    "tui.test.transcript_test_ts"
+  ]
+}
