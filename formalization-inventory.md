@@ -1,10 +1,7 @@
 # formalization-inventory.md
 
-> GENERATED PLACEHOLDER. Authoritative source: [graph/contract-graph.jsonl](graph/contract-graph.jsonl).
-> This file is a human-readable stub until graph-driven report generation is implemented.
-
-## Seed formal scope
+> Generated from `graph/contract-graph.jsonl`. Do not edit directly.
 
 | Profile | Surface | State | Note |
 | --- | --- | --- | --- |
-| `profile.runtime_formal` | `surface.kernel` | `draft` | Kernel-facing formal obligations will land after baseline graph bootstrap. |
+| `profile.runtime_formal` | `surface.kernel` | `draft` | Minimal kernel containing session state, event application, permission state, replay semantics, and project/worktree identity. |

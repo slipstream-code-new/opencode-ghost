@@ -1,12 +1,14 @@
 # refinement-ledger.md
 
-> GENERATED PLACEHOLDER. Authoritative source: [graph/contract-graph.jsonl](graph/contract-graph.jsonl).
-> This file is a human-readable stub until graph-driven report generation is implemented.
-
-## Seed refinement anchors
+> Generated from `graph/contract-graph.jsonl`. Do not edit directly.
 
 | Surface | Seed world | Governing profile |
 | --- | --- | --- |
 | `surface.runtime` | `world.minimal_repo` | `profile.core_runtime` |
+| `surface.kernel` |  | `profile.runtime_formal` |
 | `surface.tui` | `world.permission_session` | `profile.tui_certified` |
-| `surface.kernel` | `world.minimal_repo` | `profile.runtime_formal` |
+| `surface.integrations` |  | `profile.integrations_canonical` |
+| `surface.security` |  | `profile.security_critical` |
+| `surface.runtime` |  | `world.minimal_repo` |
+| `surface.runtime` |  | `world.permission_session` |
+| `surface.tui` |  | `world.permission_session` |

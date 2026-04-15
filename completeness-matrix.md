@@ -1,18 +1,35 @@
 # completeness-matrix.md
 
-> GENERATED PLACEHOLDER. Authoritative source: [graph/contract-graph.jsonl](graph/contract-graph.jsonl).
-> This file is a human-readable stub until graph-driven report generation is implemented.
+> Generated from `graph/contract-graph.jsonl`. Do not edit directly.
 
-## Seed matrix
-
-| Entity | Class | State | Path |
-| --- | --- | --- | --- |
-| `artifact.graph.contract_graph` | `normative` | `draft` | `graph/contract-graph.jsonl` |
-| `artifact.graph.contract_graph_schema` | `normative` | `draft` | `graph/schema/contract-graph.schema.json` |
-| `report.claims_ledger` | `generated` | `draft` | `claims-ledger.md` |
-| `report.formalization_inventory` | `generated` | `draft` | `formalization-inventory.md` |
-| `report.completeness_matrix` | `generated` | `draft` | `completeness-matrix.md` |
-| `report.refinement_ledger` | `generated` | `draft` | `refinement-ledger.md` |
-| `report.rust_ergonomics` | `generated` | `draft` | `rust-ergonomics-report.md` |
-| `report.semantic_coverage` | `generated` | `draft` | `semantic-coverage-report.md` |
-| `report.tcb_inventory` | `generated` | `draft` | `tcb-inventory.md` |
+| Entity | Type | Class | State | Path |
+| --- | --- | --- | --- | --- |
+| `repo.opencode_ghost` | `repo` | `normative` | `provisional` | `.` |
+| `implementation.opencode_source` | `implementation` | `normative` | `provisional` |  |
+| `artifact.graph.contract_graph` | `artifact` | `normative` | `draft` | `graph/contract-graph.jsonl` |
+| `artifact.graph.contract_graph_schema` | `artifact` | `normative` | `draft` | `graph/schema/contract-graph.schema.json` |
+| `artifact.policy.classification` | `policy` | `normative` | `provisional` |  |
+| `artifact.policy.promotion` | `policy` | `normative` | `provisional` |  |
+| `profile.core_runtime` | `profile` | `normative` | `draft` |  |
+| `profile.runtime_formal` | `profile` | `normative` | `draft` |  |
+| `profile.tui_certified` | `profile` | `normative` | `draft` |  |
+| `profile.integrations_canonical` | `profile` | `normative` | `draft` |  |
+| `profile.security_critical` | `profile` | `normative` | `draft` |  |
+| `profile.full_reference` | `profile` | `normative` | `draft` |  |
+| `surface.runtime` | `surface` | `normative` | `provisional` |  |
+| `surface.tui` | `surface` | `normative` | `provisional` |  |
+| `surface.integrations` | `surface` | `normative` | `provisional` |  |
+| `surface.security` | `surface` | `normative` | `provisional` |  |
+| `surface.kernel` | `surface` | `normative` | `draft` |  |
+| `world.minimal_repo` | `world` | `normative` | `draft` |  |
+| `world.permission_session` | `world` | `normative` | `draft` |  |
+| `claim.source_first_certification` | `claim` | `normative` | `provisional` |  |
+| `claim.stable_ids` | `claim` | `normative` | `provisional` |  |
+| `claim.generated_governance` | `claim` | `normative` | `provisional` |  |
+| `report.claims_ledger` | `report` | `generated` | `draft` | `claims-ledger.md` |
+| `report.formalization_inventory` | `report` | `generated` | `draft` | `formalization-inventory.md` |
+| `report.completeness_matrix` | `report` | `generated` | `draft` | `completeness-matrix.md` |
+| `report.refinement_ledger` | `report` | `generated` | `draft` | `refinement-ledger.md` |
+| `report.rust_ergonomics` | `report` | `generated` | `draft` | `rust-ergonomics-report.md` |
+| `report.semantic_coverage` | `report` | `generated` | `draft` | `semantic-coverage-report.md` |
+| `report.tcb_inventory` | `report` | `generated` | `draft` | `tcb-inventory.md` |
