@@ -1,0 +1,8 @@
+{"kind":"hello","protocol_version":"0.1.0","implementation_id":"opencode-source","implementation_version":"9640d889baa58fa01ed612a6372ba77462f79d9f"}
+{"kind":"capabilities","supported_profiles":["core-runtime","runtime-formal"],"supported_transports":["file_path"],"supported_observations":["state_projection"]}
+{"kind":"profile_request","profile_id":"runtime-formal"}
+{"kind":"profile_response","profile_id":"runtime-formal","accepted":true}
+{"kind":"case_offer","case_id":"witness.runtime.permission_cycle","profile_id":"runtime-formal","schema_family":"contract.runtime.case","payload":{"path":"contracts/runtime/cases/witness.permission_cycle.json","required_runtime_routes":["session.create","session.prompt","permission.reply","session.status"]}}
+{"kind":"case_accept","case_id":"witness.runtime.permission_cycle","accepted":true}
+{"kind":"checkpoint","case_id":"witness.runtime.permission_cycle","seq":1,"observation_kind":"state_projection","payload":{"created":true,"phase":"idle","permission":"approved","events":6}}
+{"kind":"verdict","case_id":"witness.runtime.permission_cycle","status":"pass","evidence":"evidence/traceability/commuting.runtime.permission_cycle.json"}
