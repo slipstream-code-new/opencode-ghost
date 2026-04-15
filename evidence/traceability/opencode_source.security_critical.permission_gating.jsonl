@@ -1,0 +1,8 @@
+{"kind":"hello","protocol_version":"0.1.0","implementation_id":"opencode-source","implementation_version":"9640d889baa58fa01ed612a6372ba77462f79d9f"}
+{"kind":"capabilities","supported_profiles":["security-critical"],"supported_transports":["file_path"],"supported_observations":["permission_gate"]}
+{"kind":"profile_request","profile_id":"security-critical"}
+{"kind":"profile_response","profile_id":"security-critical","accepted":true}
+{"kind":"case_offer","case_id":"witness.security.permission_gating","profile_id":"security-critical","schema_family":"contract.security.case","payload":{"path":"contracts/security/cases/permission.gating.json"}}
+{"kind":"case_accept","case_id":"witness.security.permission_gating","accepted":true}
+{"kind":"checkpoint","case_id":"witness.security.permission_gating","seq":1,"observation_kind":"permission_gate","payload":{"required_routes":["permission.reply","session.prompt"],"required_claims":["claim.runtime.pending_waiting","claim.runtime.approved_idle"],"runtime_permission_cycle_status":"pass"}}
+{"kind":"verdict","case_id":"witness.security.permission_gating","status":"pass","evidence":"evidence/traceability/commuting.security.permission_gating.json"}

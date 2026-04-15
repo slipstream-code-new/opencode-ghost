@@ -18,3 +18,7 @@
 - `claim.tui.source_certified.permission_view`: The original opencode source tree satisfies the TUI-certified witness slice under the conformance-kit protocol transcript.
 - `claim.normalization.runtime_laws`: Runtime normalization satisfies determinism, idempotence, monotonic erasure, and semantic preservation on adversarial fixtures.
 - `claim.normalization.tui_laws`: TUI normalization satisfies determinism, idempotence, monotonic erasure, and semantic preservation on adversarial fixtures.
+- `claim.integrations.providers_commuting`: Canonical provider requirements project to the same observed provider inventory in the extracted integration surface.
+- `claim.integrations.source_certified.providers`: The original opencode source tree satisfies the canonical provider witness slice under the conformance-kit protocol transcript.
+- `claim.security.permission_gating_commuting`: Permission gating requirements project to the same observed route and claim set across the promoted runtime security witness slice.
+- `claim.security.source_certified.permission_gating`: The original opencode source tree satisfies the security-critical permission-gating witness slice under the conformance-kit protocol transcript.

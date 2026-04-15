@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "contract.integrations.case",
+  "status": "provisional",
+  "case_id": "witness.integrations.providers",
+  "profile_id": "integrations-canonical",
+  "world_id": "world.minimal_repo",
+  "expect": {
+    "kind": "provider_inventory",
+    "observation_space": {
+      "projection": "canonical_provider_projection",
+      "equivalence": "set_and_path_equality",
+      "normalization": "identity"
+    },
+    "payload": {
+      "required_dependencies": [
+        "@ai-sdk/anthropic",
+        "@ai-sdk/openai"
+      ],
+      "required_files": [
+        "packages/opencode/src/provider/provider.ts",
+        "packages/opencode/src/provider/models.ts"
+      ]
+    }
+  }
+}

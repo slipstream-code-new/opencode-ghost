@@ -1,0 +1,22 @@
+{
+  "case_id": "witness.integrations.providers",
+  "profile_id": "integrations-canonical",
+  "observation_space": {
+    "projection": "canonical_provider_projection",
+    "equivalence": "set_and_path_equality",
+    "normalization": "identity"
+  },
+  "actual": {
+    "dependencies": [
+      "@ai-sdk/anthropic",
+      "@ai-sdk/openai"
+    ],
+    "files": [
+      "packages/opencode/src/provider/provider.ts",
+      "packages/opencode/src/provider/models.ts"
+    ]
+  },
+  "missing_dependencies": [],
+  "missing_files": [],
+  "status": "pass"
+}

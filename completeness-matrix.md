@@ -54,6 +54,16 @@
 | `claim.tui.source_certified.permission_view` | `claim` | `normative` | `provisional` |  |
 | `claim.normalization.runtime_laws` | `claim` | `normative` | `provisional` |  |
 | `claim.normalization.tui_laws` | `claim` | `normative` | `provisional` |  |
+| `artifact.case.integrations_providers` | `artifact` | `normative` | `provisional` | `contracts/integrations/cases/canonical.providers.json` |
+| `artifact.case.security_permission_gating` | `artifact` | `normative` | `provisional` | `contracts/security/cases/permission.gating.json` |
+| `artifact.evidence.integrations_providers_commuting` | `artifact` | `generated` | `provisional` | `evidence/traceability/commuting.integrations.providers.json` |
+| `artifact.evidence.security_permission_gating_commuting` | `artifact` | `generated` | `provisional` | `evidence/traceability/commuting.security.permission_gating.json` |
+| `artifact.evidence.opencode_integrations_transcript` | `artifact` | `generated` | `provisional` | `evidence/traceability/opencode_source.integrations_canonical.providers.jsonl` |
+| `artifact.evidence.opencode_security_transcript` | `artifact` | `generated` | `provisional` | `evidence/traceability/opencode_source.security_critical.permission_gating.jsonl` |
+| `claim.integrations.providers_commuting` | `claim` | `normative` | `provisional` |  |
+| `claim.integrations.source_certified.providers` | `claim` | `normative` | `provisional` |  |
+| `claim.security.permission_gating_commuting` | `claim` | `normative` | `provisional` |  |
+| `claim.security.source_certified.permission_gating` | `claim` | `normative` | `provisional` |  |
 | `report.claims_ledger` | `report` | `generated` | `draft` | `claims-ledger.md` |
 | `report.formalization_inventory` | `report` | `generated` | `draft` | `formalization-inventory.md` |
 | `report.completeness_matrix` | `report` | `generated` | `draft` | `completeness-matrix.md` |

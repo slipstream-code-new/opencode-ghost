@@ -1,0 +1,23 @@
+{
+  "case_id": "witness.security.permission_gating",
+  "profile_id": "security-critical",
+  "observation_space": {
+    "projection": "permission_gating_projection",
+    "equivalence": "exact_json",
+    "normalization": "identity"
+  },
+  "actual": {
+    "required_routes": [
+      "permission.reply",
+      "session.prompt"
+    ],
+    "required_claims": [
+      "claim.runtime.pending_waiting",
+      "claim.runtime.approved_idle"
+    ],
+    "runtime_permission_cycle_status": "pass"
+  },
+  "missing_routes": [],
+  "missing_claims": [],
+  "status": "pass"
+}

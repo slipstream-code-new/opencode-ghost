@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "contract.security.case",
+  "status": "provisional",
+  "case_id": "witness.security.permission_gating",
+  "profile_id": "security-critical",
+  "world_id": "world.permission_session",
+  "expect": {
+    "kind": "permission_gate",
+    "observation_space": {
+      "projection": "permission_gating_projection",
+      "equivalence": "exact_json",
+      "normalization": "identity"
+    },
+    "payload": {
+      "required_routes": [
+        "permission.reply",
+        "session.prompt"
+      ],
+      "required_claims": [
+        "claim.runtime.pending_waiting",
+        "claim.runtime.approved_idle"
+      ]
+    }
+  }
+}
