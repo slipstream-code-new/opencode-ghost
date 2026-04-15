@@ -8,11 +8,11 @@
 | --- | --- |
 | surfaces | 5 |
 | profiles | 6 |
-| claims | 36 |
+| claims | 37 |
 | commuting_claims | 8 |
 | source_certified_claims | 12 |
 | requires_edges | 27 |
-| checked_by_edges | 28 |
+| checked_by_edges | 29 |
 | certifies_edges | 13 |
 
 ## Surface Coverage
@@ -64,4 +64,5 @@
 | `claim.security.path_operations_commuting` | `operational` | 1 | `provisional` |
 | `claim.security.source_certified.path_operations` | `operational` | 1 | `provisional` |
 | `claim.rust_reference.runtime_tui` | `operational` | 1 | `provisional` |
+| `claim.rust_blind.runtime_tui` | `operational` | 1 | `provisional` |
 | `claim.go_sanity.runtime_tui` | `operational` | 1 | `provisional` |
