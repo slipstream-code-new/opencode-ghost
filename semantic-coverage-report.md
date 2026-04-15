@@ -13,8 +13,8 @@
 | source_certified_claims | 16 |
 | requires_edges | 35 |
 | checked_by_edges | 37 |
-| certifies_edges | 22 |
-| profile_certifications | 6 |
+| certifies_edges | 28 |
+| profile_certifications | 12 |
 
 ## Surface Coverage
 

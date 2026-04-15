@@ -6,9 +6,9 @@
 
 | Profile | Includes | Covers | Requires | Certified | State |
 | --- | --- | --- | --- | --- | --- |
-| `profile.core_runtime` |  | `surface.runtime` | 3 | 1 | `provisional` |
-| `profile.runtime_formal` |  | `surface.kernel` | 6 | 1 | `provisional` |
-| `profile.tui_certified` |  | `surface.tui` | 18 | 1 | `provisional` |
+| `profile.core_runtime` |  | `surface.runtime` | 3 | 3 | `provisional` |
+| `profile.runtime_formal` |  | `surface.kernel` | 6 | 3 | `provisional` |
+| `profile.tui_certified` |  | `surface.tui` | 18 | 3 | `provisional` |
 | `profile.integrations_canonical` |  | `surface.integrations` | 4 | 1 | `provisional` |
 | `profile.security_critical` |  | `surface.security` | 4 | 1 | `provisional` |
 | `profile.full_reference` | `profile.core_runtime`, `profile.runtime_formal`, `profile.tui_certified`, `profile.integrations_canonical`, `profile.security_critical` |  | 35 | 1 | `provisional` |
@@ -17,7 +17,7 @@
 
 | Type | Count |
 | --- | --- |
-| artifact | 77 |
+| artifact | 82 |
 | claim | 45 |
 | surface | 5 |
 | profile | 6 |

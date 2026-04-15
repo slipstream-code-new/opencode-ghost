@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1.0",
+  "artifact_family": "evidence.consumer.certification",
+  "implementation_id": "go-sanity",
+  "status": "pass",
+  "profiles": [
+    "core-runtime",
+    "runtime-formal",
+    "tui-certified"
+  ],
+  "runtime_cases": 3,
+  "tui_cases": 9
+}
