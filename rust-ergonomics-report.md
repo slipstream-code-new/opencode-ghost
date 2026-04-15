@@ -12,3 +12,4 @@
 - `claim.runtime.pending_waiting`: The runtime witness preserves the invariant that pending permission state and waiting permission phase coincide.
 - `claim.runtime.approved_idle`: The runtime witness preserves the invariant that approved permission replies return the session to idle.
 - `claim.runtime.witness_final`: The canonical create -> busy -> ask -> approve witness converges on the approved idle kernel state.
+- `claim.runtime.commuting.permission_cycle`: The canonical permission-cycle case projects to the same kernel observation across witness steps, runtime case expectations, and formal witness markers.

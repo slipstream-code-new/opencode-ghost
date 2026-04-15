@@ -1,0 +1,37 @@
+{
+  "case_id": "witness.runtime.permission_cycle",
+  "profile_id": "runtime-formal",
+  "world_id": "world.permission_session",
+  "observation_space": {
+    "projection": "permission_cycle_projection",
+    "equivalence": "exact_json",
+    "normalization": "identity"
+  },
+  "checks": {
+    "witness_matches_case": true,
+    "routes_present": true,
+    "transitions_present": true,
+    "formal_markers": {
+      "quint_permission_cycle": true,
+      "quint_approved_idle": true,
+      "lean_witness_final": true,
+      "lean_coherent_replay": true
+    },
+    "projection_matches_expectation": true
+  },
+  "actual": {
+    "created": true,
+    "phase": "idle",
+    "permission": "approved",
+    "events": 6
+  },
+  "expect": {
+    "created": true,
+    "phase": "idle",
+    "permission": "approved",
+    "events": 6
+  },
+  "missing_routes": [],
+  "missing_transitions": [],
+  "status": "pass"
+}
