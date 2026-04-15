@@ -11,7 +11,7 @@
 | claims | 16 |
 | commuting_claims | 2 |
 | source_certified_claims | 4 |
-| requires_edges | 10 |
+| requires_edges | 11 |
 | checked_by_edges | 10 |
 | certifies_edges | 5 |
 

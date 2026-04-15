@@ -1,0 +1,46 @@
+{
+  "stage": "bootstrap",
+  "metrics": {
+    "surfaces": [
+      "surface.runtime",
+      "surface.tui",
+      "surface.integrations",
+      "surface.security"
+    ],
+    "commuting_covered_surfaces": [
+      "surface.runtime",
+      "surface.tui",
+      "surface.integrations",
+      "surface.security"
+    ],
+    "source_certified_surfaces": [
+      "surface.runtime",
+      "surface.tui",
+      "surface.integrations",
+      "surface.security"
+    ],
+    "profiles": [
+      {
+        "id": "profile.core_runtime",
+        "has_requirements": true
+      },
+      {
+        "id": "profile.runtime_formal",
+        "has_requirements": true
+      },
+      {
+        "id": "profile.tui_certified",
+        "has_requirements": true
+      },
+      {
+        "id": "profile.integrations_canonical",
+        "has_requirements": true
+      },
+      {
+        "id": "profile.security_critical",
+        "has_requirements": true
+      }
+    ]
+  },
+  "frozen": true
+}

@@ -17,6 +17,8 @@
 | `artifact.script.certify_tui` | `artifact` | `normative` | `provisional` | `script/tui-certify.ts` |
 | `artifact.script.verify_all` | `artifact` | `normative` | `provisional` | `verify-all` |
 | `artifact.script.normalize` | `artifact` | `normative` | `provisional` | `script/normalize.ts` |
+| `artifact.script.determinism` | `artifact` | `normative` | `provisional` | `script/determinism.ts` |
+| `artifact.script.freeze` | `artifact` | `normative` | `provisional` | `script/freeze.ts` |
 | `artifact.test.normalization_runtime` | `artifact` | `normative` | `provisional` | `tests/normalization/runtime.json` |
 | `artifact.test.normalization_tui` | `artifact` | `normative` | `provisional` | `tests/normalization/tui.json` |
 | `artifact.policy.classification` | `policy` | `normative` | `provisional` |  |
@@ -60,6 +62,7 @@
 | `artifact.evidence.security_permission_gating_commuting` | `artifact` | `generated` | `provisional` | `evidence/traceability/commuting.security.permission_gating.json` |
 | `artifact.evidence.opencode_integrations_transcript` | `artifact` | `generated` | `provisional` | `evidence/traceability/opencode_source.integrations_canonical.providers.jsonl` |
 | `artifact.evidence.opencode_security_transcript` | `artifact` | `generated` | `provisional` | `evidence/traceability/opencode_source.security_critical.permission_gating.jsonl` |
+| `artifact.evidence.semantic_freeze` | `artifact` | `generated` | `provisional` | `evidence/traceability/semantic-freeze.json` |
 | `claim.integrations.providers_commuting` | `claim` | `normative` | `provisional` |  |
 | `claim.integrations.source_certified.providers` | `claim` | `normative` | `provisional` |  |
 | `claim.security.permission_gating_commuting` | `claim` | `normative` | `provisional` |  |
