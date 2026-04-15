@@ -26,6 +26,8 @@ const readRows = async () =>
     .filter(Boolean)
     .map((x) => JSON.parse(x) as Row)
 
+const readJson = async <T>(path: string) => (await Bun.file(join(root, path)).json()) as T
+
 const md = (title: string, body: string[]) => `# ${title}\n\n${body.join("\n")}\n`
 
 const table = (head: string[], rows: string[][]) =>
@@ -52,47 +54,78 @@ const renderClaims = (rows: Row[]) =>
 const renderFormal = (rows: Row[]) => {
   const edges = rows.filter((x) => x.kind === "edge")
   const nodes = new Map(rows.filter((x) => x.kind === "node").map((x) => [x.id, x]))
+  const claims = rows.filter((x) => x.kind === "node" && x.type === "claim")
   return md("formalization-inventory.md", [
     `> ${quote}`,
     "",
+    "## Formal Claims",
+    "",
     table(
-      ["Entity", "Relation", "Target", "State", "Note"],
-      edges
-        .filter(
-          (x) =>
-            x.from === "profile.runtime_formal" ||
-            x.to === "surface.kernel" ||
-            x.type === "proved_by" ||
-            x.type === "specified_by",
-        )
-        .map((x) => [
-          `\`${x.from}\``,
-          `\`${x.type}\``,
-          `\`${x.to}\``,
-          `\`${nodes.get(x.from || "")?.state || nodes.get(x.to || "")?.state || x.state || "draft"}\``,
-          nodes.get(x.from || "")?.note || nodes.get(x.to || "")?.note || x.note || "",
+      ["Claim", "Support", "Refines", "Checked by", "State"],
+      claims
+        .filter((x) => x.id.startsWith("claim.runtime.") || x.id.startsWith("claim.normalization."))
+        .map((claim) => [
+          `\`${claim.id}\``,
+          `${edges.filter((x) => ["proved_by", "specified_by"].includes(x.type) && x.from === claim.id).map((x) => `\`${x.to}\``).join(", ")}`,
+          `${edges.filter((x) => x.type === "refines" && x.from === claim.id).map((x) => `\`${x.to}\``).join(", ")}`,
+          `${edges.filter((x) => x.type === "checked_by" && x.from === claim.id).map((x) => `\`${x.to}\``).join(", ")}`,
+          `\`${claim.state}\``,
         ]),
+    ),
+    "",
+    "## Formal Profile Requirements",
+    "",
+    table(
+      ["Profile", "Requires", "Covers"],
+      edges
+        .filter((x) => x.from === "profile.runtime_formal" && ["requires", "covers"].includes(x.type))
+        .reduce(
+          (acc, edge) => {
+            const row = acc.get(edge.from || "") || { req: [] as string[], cov: [] as string[] }
+            if (edge.type === "requires") row.req.push(`\`${edge.to}\``)
+            if (edge.type === "covers") row.cov.push(`\`${edge.to}\``)
+            acc.set(edge.from || "", row)
+            return acc
+          },
+          new Map<string, { req: string[]; cov: string[] }>(),
+        )
+        .entries()
+        .map(([id, row]) => [`\`${id}\``, row.req.join(", "), row.cov.join(", ")]),
     ),
   ])
 }
 
-const renderMatrix = (rows: Row[]) =>
-  md("completeness-matrix.md", [
+const renderMatrix = (rows: Row[]) => {
+  const nodes = rows.filter((x) => x.kind === "node")
+  const edges = rows.filter((x) => x.kind === "edge")
+  const profiles = nodes.filter((x) => x.type === "profile")
+  return md("completeness-matrix.md", [
     `> ${quote}`,
     "",
+    "## Profile Matrix",
+    "",
     table(
-      ["Entity", "Type", "Class", "State", "Path"],
-      rows
-        .filter((x) => x.kind === "node")
-        .map((x) => [
-          `\`${x.id}\``,
-          `\`${x.type}\``,
-          `\`${x.class}\``,
-          `\`${x.state}\``,
-          x.path ? `\`${x.path}\`` : "",
-        ]),
+      ["Profile", "Covers", "Requires", "Certified", "State"],
+      profiles.map((profile) => [
+        `\`${profile.id}\``,
+        `${edges.filter((x) => x.type === "covers" && x.from === profile.id).map((x) => `\`${x.to}\``).join(", ")}`,
+        `${edges.filter((x) => x.type === "requires" && x.from === profile.id).length}`,
+        `${edges.filter((x) => x.type === "certifies" && x.to?.includes(profile.id.split(".").at(-1) || "")).length}`,
+        `\`${profile.state}\``,
+      ]),
+    ),
+    "",
+    "## Artifact Totals",
+    "",
+    table(
+      ["Type", "Count"],
+      ["artifact", "claim", "surface", "profile", "report", "world"].map((type) => [
+        type,
+        `${nodes.filter((x) => x.type === type).length}`,
+      ]),
     ),
   ])
+}
 
 const renderRefine = (rows: Row[]) => {
   const edges = rows.filter((x) => x.kind === "edge")
@@ -113,16 +146,62 @@ const renderRefine = (rows: Row[]) => {
   ])
 }
 
-const renderRust = (rows: Row[]) =>
-  md("rust-ergonomics-report.md", [
+const renderRust = async (rows: Row[]) => {
+  const kit = await readJson<{
+    messages: {
+      discriminant: string
+      variants: string[]
+    }
+    checkpoint: {
+      required_fields: string[]
+    }
+    verdict: {
+      status: {
+        values: string[]
+      }
+    }
+    ordering_rules: string[]
+  }>("contracts/schema/conformance-kit.json")
+  const runtime = await readJson<{
+    determinism: {
+      required: boolean
+      inputs: string[]
+    }
+    observation: {
+      required_common_fields: string[]
+    }
+    rust_notes: string[]
+  }>("contracts/iut/runtime.json")
+  const tui = await readJson<{
+    rust_notes?: string[]
+  }>("contracts/iut/tui.json")
+  return md("rust-ergonomics-report.md", [
     `> ${quote}`,
     "",
-    "## Seed Rust-facing obligations",
+    "## Envelope Properties",
     "",
-    ...rows
-      .filter((x) => x.kind === "node" && (x.type === "claim" || x.type === "policy"))
-      .map((x) => `- \`${x.id}\`: ${x.note || x.title || ""}`),
+    table(
+      ["Property", "Value"],
+      [
+        ["conformance_discriminant", `\`${kit.messages.discriminant}\``],
+        ["conformance_variants", `${kit.messages.variants.length}`],
+        ["verdict_status_values", `${kit.verdict.status.values.join(", ")}`],
+        ["runtime_common_fields", `${runtime.observation.required_common_fields.join(", ")}`],
+        ["checkpoint_common_fields", `${kit.checkpoint.required_fields.join(", ")}`],
+        ["deterministic_mode_required", `${runtime.determinism.required}`],
+      ],
+    ),
+    "",
+    "## Ordering Rules",
+    "",
+    ...kit.ordering_rules.map((x) => `- ${x}`),
+    "",
+    "## Rust Notes",
+    "",
+    ...runtime.rust_notes.map((x) => `- ${x}`),
+    ...((tui.rust_notes || []).map((x) => `- ${x}`)),
   ])
+}
 
 const renderCoverage = (rows: Row[]) =>
   md("semantic-coverage-report.md", (() => {
@@ -216,7 +295,7 @@ const targets = async () => {
     [join(root, "formalization-inventory.md"), renderFormal(rows)],
     [join(root, "completeness-matrix.md"), renderMatrix(rows)],
     [join(root, "refinement-ledger.md"), renderRefine(rows)],
-    [join(root, "rust-ergonomics-report.md"), renderRust(rows)],
+    [join(root, "rust-ergonomics-report.md"), await renderRust(rows)],
     [join(root, "semantic-coverage-report.md"), renderCoverage(rows)],
     [join(root, "tcb-inventory.md"), renderTcb(rows)],
   ] as const
